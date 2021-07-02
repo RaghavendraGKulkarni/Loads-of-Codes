@@ -11,12 +11,12 @@ Program Output Format :- Reversed String
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
-void reverse(string &s,ll k,ll l)
+void solve(string &s,ll k,ll l)
 {
     if(k<l)
     {
         swap(s[k],s[l]);
-        reverse(s,k+1,l-1);
+        solve(s,k+1,l-1);
     }
     return;
 }
@@ -30,7 +30,7 @@ int main()
     ll n;
     fin>>s;
     n=s.length();
-    reverse(s,0,n-1);
+    solve(s,0,n-1);
     fout<<s;
     fin.close();
     fout.close();
