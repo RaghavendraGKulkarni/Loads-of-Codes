@@ -16,8 +16,9 @@ using namespace std;
 #define ll long long int
 ll solve(ll coins,vector<ll> denominations,ll amount)
 {
-    ll i,j;
+    ll i,j,answer=LLONG_MAX;
     vector<vector<ll>> dp(coins+1,vector<ll> (amount+1));
+    sort(denominations.begin(),denominations.end());
     for(i=0;i<=coins;i++)
         dp[i][0]=0;
     for(i=1;i<=amount;i++)
@@ -27,10 +28,22 @@ ll solve(ll coins,vector<ll> denominations,ll amount)
         {
             if(j<denominations[i-1])
                 dp[i][j]=dp[i-1][j];
+            else if(dp[i-1][j-denominations[i-1]]==-1 && dp[i][j-denominations[i-1]]==-1)
+                dp[i][j]=dp[i-1][j];
+            else if(dp[i-1][j-denominations[i-1]]==-1 && dp[i][j-denominations[i-1]]!=-1)
+                dp[i][j]=dp[i][j-denominations[i-1]]+1;
+            else if(dp[i-1][j-denominations[i-1]]!=-1 && dp[i][j-denominations[i-1]]==-1)
+                dp[i][j]=1+dp[i-1][j-denominations[i-1]];
             else
                 dp[i][j]=1+min(dp[i-1][j-denominations[i-1]],dp[i][j-denominations[i-1]]);
+            if(j==amount && dp[i][j]>-1)
+                answer=min(answer,dp[i][j]);
         }
-    return dp[coins][amount];
+    if(amount==0)
+        return 0;
+    if(answer==LLONG_MAX)
+        return -1;
+    return answer;
 }
 int main()
 {
