@@ -14,7 +14,7 @@ Program Output Format :- The number of integers in the sequence strictly smaller
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
-ll countSmaller(vector<ll> A,ll k)
+ll solve(vector<ll> A,ll k)
 {
     ll n=A.size(),l=0,h=n-1,m,ans=0;
     while(l<=h)
