@@ -19,16 +19,19 @@ ll solve(ll n,vector<map<ll,ll>> adj,ll s)
 {
     priority_queue<pair<ll,ll>,vector<pair<ll,ll>>,greater<pair<ll,ll>>> pq;
     vector<ll> dist(n+1,INF),pred(n+1,s);
-    ll next,MST=0;
-    pq.push(make_pair(0,s));
+    vector<bool> visited(n+1,false);
+    ll next,MST=0,count=n;
+    pq.push({0,s});
     dist[s]=0;
-    while(!pq.empty())
+    while(n>0 && !pq.empty())
     {
         next=pq.top().second;
-        pq.pop();
         MST+=pq.top().first;
+        visited[next]=true;
+        n--;
+        pq.pop();
         for(auto &it:adj[next])
-            if (dist[it.first]>it.second)
+            if(visited[it.first]==false && dist[it.first]>it.second)
             {
                 dist[it.first]=it.second;
                 pred[it.first]=next;
