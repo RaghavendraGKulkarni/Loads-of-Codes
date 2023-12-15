@@ -5,8 +5,8 @@ using namespace std;
 
 /*
 Name        : merge()
-Description : Sorts the array using Insertion Sort iteratively
-Arguments   : The array to be sorted and the size of the array, in that order
+Description : Merges two sorted subarrays into one sorted array
+Arguments   : The complete array, buffer array and the boundaries of subarrays, in that order
 Return      : None
 */
 void merge(int arr[], int temp[], int low, int mid, int high) {
