@@ -1,14 +1,13 @@
 // Include the required header files
 #include<iostream>
 #include<fstream>
-#include<limits.h>
 #include<array>
 using namespace std;
 
 /*
 Name        : occurrence()
 Description : Computes the subarray that crosses mid index and has the maximum sum
-Arguments   : The array and the indices low, mid and high
+Arguments   : The array and the indices low, mid and high, in that order
 Return      : An array denoting the left and right boundaries of the subarray and the maximum sum
 */
 array<int, 2> occurrence(int arr[], int n, int key) {

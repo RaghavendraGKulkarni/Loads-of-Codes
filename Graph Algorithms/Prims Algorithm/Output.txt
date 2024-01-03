@@ -1,5 +1,0 @@
-Shortest distance to 1 is 3 via 5 -> 1
-Shortest distance to 2 is 4 via 5 -> 1 -> 2
-Shortest distance to 3 is 6 via 5 -> 1 -> 2 -> 3
-Shortest distance to 4 is 9 via 5 -> 4
-Shortest distance to 6 is 7 via 5 -> 1 -> 6

@@ -1,4 +1,4 @@
-# Binary Search
+# First and Last Occurrence in a Sorted Array
 ## Description:
 ### Given a sorted non decreasing array of n elements, the program finds the first and last occurrence of a given element (1 - indexed) using the Divide and Conquer paradigm.
 ## Input Format:
