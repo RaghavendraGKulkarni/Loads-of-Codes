@@ -12,24 +12,24 @@ Return      : The number of inversions computed in merging the sorted subarrays
 int merge(int arr[], int temp[], int low, int mid, int high) {
     
     // Initialize the required local variables
-    int i = low, j = mid + 1, k = low, inversions = 0;
+    int i = low, j = mid, k = low, inversions = 0;
 
     // Compare front element from both the arrays and add it to buffer array
-    while(i <= mid && j <= high) {
+    while(i <= mid - 1 && j <= high) {
         if(arr[i] <= arr[j])
             temp[k++] = arr[i++];
         else {
             temp[k++] = arr[j++];
-            inversions += (j - mid + 1);
+            inversions += (mid - i);
         }
     }
 
     // Append the remaining part of the arrays, if any
-    while(i <= mid)
+    while(i <= mid - 1)
         temp[k++] = arr[i++];
     while(j <= high){
         temp[k++] = arr[j++];
-        inversions += (j - mid + 1);
+        inversions += (mid - i);
     }
     
     // Transfer back the contents to original array and return the number of inversions
@@ -48,17 +48,17 @@ int mergeSort(int arr[], int temp[], int low, int high) {
     
     // Handle the base case
     if(low >= high)
-        return;
+        return 0;
     
     // Partition the array into two halves
-    int mid = low + (high - low)/2, inversions = 0;
+    int mid = (low + high)/2, inversions = 0;
 
     // Sort the left and right halves of the array
     inversions += mergeSort(arr, temp, low, mid);
     inversions += mergeSort(arr, temp, mid + 1, high);
 
-    // Merge the sorted halves and return
-    inversions += merge(arr, temp, low, mid, high);
+    // Merge the sorted halves
+    inversions += merge(arr, temp, low, mid + 1, high);
     
     // Return the number of inversions
     return inversions;
@@ -72,10 +72,10 @@ Return      : The number of inversions in the array
 */
 int countInversion(int arr[], int n) {
     
-    // Partition the array into two halves
+    // Declare the required local variables
     int *temp = new int[n], inversions = 0;
 
-    // Sort the left and right halves of the array
+    // Apply merge sort on the array
     inversions = mergeSort(arr, temp, 0, n - 1);
 
     // Delete the temporary buffer and return the number of inversions
@@ -109,17 +109,17 @@ int main() {
     // Close the input file
     input.close();
 
-    // Call the subroutine to sort the array
+    // Call the subroutine to count the inversions in the array
     inversions = countInversion(arr, n);
 
     // Open the output file
     ofstream output;
     output.open("Output.txt");
 
-    // Write the sorted array to the output file
+    // Write the output to the output file
     output << inversions;
     
-    // Delete the arrays, close the output file and return
+    // Delete the array, close the output file and return
     delete[] arr;
     output.close();
     return 0;

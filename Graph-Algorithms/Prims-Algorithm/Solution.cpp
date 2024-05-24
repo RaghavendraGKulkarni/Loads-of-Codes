@@ -16,45 +16,22 @@ typedef struct graph {
     int v;
     vertex *vertices;
 } graph;
-typedef struct path {
-    int distance;
-    string path;
-} path;
 
 /*
-Name        : trace()
-Description : Traces the path from the source to any destination vertex, recursively backwards
-Arguments   : The predecessor array and the destination vertex
-Return      : The path in a string
+Name        : prims()
+Description : Computes the minimum spanning tree from the source vertex of the graph
+Arguments   : The graph, the source vertex and the array to store the tree edges
+Return      : The total weight of the minimum spanning tree
 */
-string trace(int pred[], int k) {
-
-    // Check for the base case
-    if(pred[k] == k)
-        return to_string(k);
-    
-    // Construct the path and return it
-    return trace(pred, pred[k]) + " -> " + to_string(k);
-}
-
-/*
-Name        : dijkstra()
-Description : Computes the shortest path from the source to every vertex of the graph
-Arguments   : The graph, the source vertex and the array to store the paths
-Return      : None
-*/
-void dijkstra(graph g, int s, path result[]) {
+int prims(graph g, int s, array<int, 3> result[]) {
     
     // Declare and initialize the required local variables
-    int *dist = new int[g.v + 1], *pred = new int[g.v + 1];
+    int mst = 0, top = 0;
     bool *visited = new bool[g.v + 1];
     array<int, 3> node;
     priority_queue<array<int, 3>, vector<array<int, 3>>, greater<array<int, 3>>> next;
-    for(int i = 1; i <= g.v; i++) {
-        dist[i] = INT_MAX;
-        pred[i] = s;
+    for(int i = 1; i <= g.v; i++)
         visited[i] = false;
-    }
 
     // Initialize the priority queue
     next.push({0, s, s});
@@ -68,26 +45,20 @@ void dijkstra(graph g, int s, path result[]) {
         if(visited[node[1]])
             continue;
         visited[node[1]] = true;
-        dist[node[1]] = node[0];
-        pred[node[1]] = node[2];
+        if(node[1] != node[2]) {
+            result[top++] = {node[2], node[1], node[0]};
+            mst += node[0];
+        }
 
         // Update the distance to neighbors of this vertex
         for(int i = 0; i < g.vertices[node[1]].degree; i++)
             if(!visited[g.vertices[node[1]].neighbors[i][0]])
-                next.push({node[0] + g.vertices[node[1]].neighbors[i][1], g.vertices[node[1]].neighbors[i][0], node[1]});
+                next.push({g.vertices[node[1]].neighbors[i][1], g.vertices[node[1]].neighbors[i][0], node[1]});
     }
 
-    // Compute the path to every vertex using the predecessor array
-    for(int i = 1; i <= g.v; i++) {
-        result[i].distance = (dist[i] == INT_MAX) ? -1 : dist[i];
-        result[i].path = (dist[i] == INT_MAX) ? "" : trace(pred, i);
-    }
-
-    // Free the arrays and return
-    delete[] dist;
-    delete[] pred;
+    // Free the arrays and return the total weight
     delete[] visited;
-    return;
+    return mst;
 }
 
 /*
@@ -107,7 +78,7 @@ int main() {
     }
 
     // Declare the required local variables
-    int e, u, v, w, s;
+    int e, u, v, w, s, mst;
     char type;
     graph g;
     
@@ -134,26 +105,19 @@ int main() {
     // Close the input file
     input.close();
 
-    path *result = new path[g.v + 1];
+    array<int, 3> *result = new array<int, 3>[g.v - 1];
 
-    // Call the subroutine to compute the shortest path from source to every vertex
-    dijkstra(g, s, result);
+    // Call the subroutine to compute the minimum spanning tree from the source vertex
+    mst = prims(g, s, result);
 
     // Open the output file
     ofstream output;
     output.open("Output.txt");
 
-    // Write the output to the output file
-    for(int i = 1; i <= g.v; i++) {
-        if(i == s)
-            continue;
-        if(i > 1)
-            output << endl;
-        if(result[i].distance == -1)
-            output << "No path to " << i;
-        else
-            output << "Shortest distance to " << i << " is " << result[i].distance << " via " << result[i].path;
-    }
+    // Write the edges followed by the tree weight to the output file
+    for(int i = 0; i < g.v - 1; i++)
+        output << "Edge (" << result[i][0] << ", " << result[i][1] << ") of weight " << result[i][2] << endl; 
+    output << mst;
 
     // Delete the arrays, close the output file and return
     for(int i = 1; i <= g.v; i++)

@@ -47,7 +47,7 @@ void mergeSort(int arr[], int temp[], int low, int high) {
         return;
     
     // Partition the array into two halves
-    int mid = low + (high - low)/2;
+    int mid = (low + high)/2;
 
     // Sort the left and right halves of the array
     mergeSort(arr, temp, low, mid);
@@ -95,7 +95,7 @@ int main() {
     for(int i = 0; i < n; i++)
         (i == 0) ? (output << arr[i]) : (output << ' ' << arr[i]);
     
-    // Delete the arrays, close the output file and return
+    // Delete the array, close the output file and return
     delete[] arr;
     delete[] temp;
     output.close();

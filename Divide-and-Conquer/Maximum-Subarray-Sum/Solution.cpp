@@ -101,12 +101,12 @@ int main() {
     ofstream output;
     output.open("Output.txt");
 
-    // Write the sum followed the subarray to the output file
+    // Write the sum followed by the subarray to the output file
     output << result[2] << endl;
     for(int i = result[0]; i <= result[1]; i++)
         (i == result[0]) ? (output << arr[i]) : (output << ' ' << arr[i]);
     
-    // Close the output file, free the memory and return
+    // Delete the array, close the output file and return
     output.close();
     delete[] arr;
     return 0;

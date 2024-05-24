@@ -88,7 +88,7 @@ int main() {
     else
         output << result[0] + 1 << ' ' << result[1] + 1;
     
-    // Close the output file, free the memory and return
+    // Delete the array, close the output file and return
     output.close();
     delete[] arr;
     return 0;

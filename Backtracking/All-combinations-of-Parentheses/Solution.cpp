@@ -68,14 +68,14 @@ int main() {
         exit(0);
     }
 
-    // Declare the required variables and read the input
+    // Declare the required local variables and read the input
     int n;
     input >> n;
 
     // Close the input file
     input.close();
 
-    // Call the subroutine to calculate the first and last occurrences
+    // Call the subroutine to generate all combinations of valid parentheses
     vector<string> result = generateParentheses(n);
 
     // Open the output file
@@ -86,7 +86,7 @@ int main() {
     for(int i = 0; i < result.size(); i++)
         (i == 0) ? (output << result[i]) : (output << '\n' << result[i]);
     
-    // Close the output file, free the memory and return
+    // Close the output file and return
     output.close();
     return 0;
 }

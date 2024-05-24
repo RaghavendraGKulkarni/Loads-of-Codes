@@ -1,0 +1,6 @@
+Edge (6, 1) of weight 4
+Edge (1, 2) of weight 1
+Edge (2, 3) of weight 2
+Edge (1, 5) of weight 3
+Edge (6, 4) of weight 6
+16

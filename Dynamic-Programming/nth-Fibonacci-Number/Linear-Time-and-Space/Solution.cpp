@@ -46,7 +46,7 @@ int main() {
         exit(0);
     }
 
-    // Declare the required variables and read the array
+    // Declare the required variables and read the input
     int n;
     input >> n;
 
@@ -60,10 +60,10 @@ int main() {
     ofstream output;
     output.open("Output.txt");
 
-    // Write the sorted array to the output file
+    // Write the output to the output file
     output << result;
     
-    // Delete the array, close the output file and return
+    // Close the output file and return
     output.close();
     return 0;
 }
