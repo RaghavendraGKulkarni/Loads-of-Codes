@@ -6,15 +6,15 @@
 using namespace std;
 
 /*
-Name        : longestSubarray()
-Description : Computes the longest subarray with a given sum in the array
-Arguments   : An array of integers, a positive integer denoting the size of the array and an integer denoting the sum, in that order
-Return      : An array of two integers denoting the left and right boundaries of the subarray
+Name        : kadane()
+Description : Computes the maximum sum of a subarray in the array
+Arguments   : An array of integers and a positive integer denoting the size of the array, in that order
+Return      : An array of three integers denoting the left boundary, right boundary and the sum of the subarray
 */
-array<int, 2> longestSubarray(int arr[], int n, int k) {
+int countSubarray(int arr[], int n, int k) {
 
     // Initialize the required local variables
-    int *leftSum = new int[n + 1], maxLength = 0, start, end;
+    int *leftSum = new int[n + 1], count = 0;
     unordered_map<int, int> mp;
 
     // Construct the left prefix sum array
@@ -26,26 +26,22 @@ array<int, 2> longestSubarray(int arr[], int n, int k) {
     for(int i = 1; i <= n; i++) {
 
         // If current prefix sum is required sum
-        if(leftSum[i] == k && maxLength < i) {
-            maxLength = i;
-            start = 1;
-            end = i;
-        }
+        if(leftSum[i] == k)
+            count++;
 
         // If the required prefix sum exists in map
-        else if(mp.find(leftSum[i] - k) != mp.end() && maxLength < (i - mp[leftSum[i] - k])) {
-            maxLength = i - mp[leftSum[i] - k];
-            start = mp[leftSum[i] - k] + 1;
-            end = i;
-        }
+        if(mp.find(leftSum[i] - k) != mp.end())
+            count += mp[leftSum[i] - k];
 
-        // Store the first encountered prefix sum index
+        // Increment the count of the prefix sum
         if(mp.find(leftSum[i]) == mp.end())
-            mp.insert({leftSum[i], i});
+            mp[leftSum[i]] = 1;
+        else
+            mp[leftSum[i]]++;
     }
 
-    // Return the boundaries of the subarray
-    return {start, end};
+    // Return the count of the subarrays
+    return count;
 }
 
 /*
@@ -75,15 +71,14 @@ int main() {
     input.close();
 
     // Call the subroutine to compute the longest subarray
-    array<int, 2> result = longestSubarray(arr, n, k);
+    int result = countSubarray(arr, n, k);
 
     // Open the output file
     ofstream output;
     output.open("Output.txt");
 
     // Write the output to the output file
-    for(int i = result[0]; i <= result[1]; i++)
-        (i == result[0]) ? (output << arr[i - 1]) : (output << ' ' << arr[i - 1]);
+    output << result;
     
     // Free the array, close the output file and return
     delete[] arr;

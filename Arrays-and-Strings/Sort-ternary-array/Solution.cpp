@@ -1,8 +1,6 @@
 // Include the required header files
 #include<iostream>
 #include<fstream>
-#include<array>
-#include<limits>
 using namespace std;
 
 /*
