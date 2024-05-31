@@ -1,6 +1,6 @@
 # Long Factorials
 ## Description:
-### Given a non-negative integer n (preferrably upto 1000), compute the factorial of n
+### Given a non-negative integer n (preferrably upto 1000), the program computes the factorial of n
 ## Input Format:
 * The first and the only line should contain the non-negative integer n. 
 ## Output Format:

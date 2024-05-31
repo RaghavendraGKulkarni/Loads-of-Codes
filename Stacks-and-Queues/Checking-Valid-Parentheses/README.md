@@ -1,6 +1,6 @@
 # Checking Valid Parentheses
 ## Description:
-### Given a combination of parentheses containing (), {} amd [] parentheses, check if it is valid or not
+### Given a combination of parentheses containing (), {} amd [] parentheses, the program checks if it is valid or not
 ## Input Format:
 * The first and only line should contain the combination of parentheses.
 ## Output Format:
