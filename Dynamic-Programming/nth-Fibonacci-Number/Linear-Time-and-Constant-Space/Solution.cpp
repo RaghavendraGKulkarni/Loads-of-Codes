@@ -5,7 +5,7 @@ using namespace std;
 
 /*
 Name        : nthFibonacciNumber()
-Description : Computes the nth Fibonacci Number using Dynamic Programming
+Description : Computes the nth Fibonacci Number
 Arguments   : A single non-negative integer denoting n
 Return      : A single non-negative integer denoting the nth Fibonacci Number
 */

@@ -44,7 +44,7 @@ int main() {
         exit(0);
     }
 
-    // Declare the required variables and read the array
+    // Declare the required variables and read the input
     int n, key;
     input >> n;
     int *arr = new int[n], *result = new int[n];
@@ -54,20 +54,20 @@ int main() {
     // Close the input file
     input.close();
 
-    // Call the subroutine to calculate the first and last occurrences
+    // Call the subroutine to calculate the previous smaller element of every element
     result = previousSmallerElement(arr, n, result);
 
     // Open the output file
     ofstream output;
     output.open("Output.txt");
 
-    // Write the result to the output file
+    // Write the output to the output file
     for(int i = 0; i < n; i++)
         (i == 0) ? (output << result[i]) : (output << ' ' << result[i]);
     
-    // Close the output file, free the memory and return
-    output.close();
+    // Delete the arrays, close the output file and return
     delete[] arr;
     delete[] result;
+    output.close();
     return 0;
 }

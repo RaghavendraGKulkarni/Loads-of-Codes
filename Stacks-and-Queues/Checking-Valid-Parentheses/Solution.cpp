@@ -74,7 +74,7 @@ int main() {
         exit(0);
     }
 
-    // Declare the required variables and read the parentheses combination
+    // Declare the required variables and read the input
     string parentheses;
     bool result;
     input >> parentheses;

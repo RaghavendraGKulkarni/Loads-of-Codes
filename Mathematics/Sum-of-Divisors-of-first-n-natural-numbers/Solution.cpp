@@ -45,7 +45,7 @@ int main() {
     // Close the input file
     input.close();
 
-    // Call the subroutine to compute the Catalan Number
+    // Call the subroutine to compute the sum of divisors
     int result = sumOfDivisors(n);
 
     // Open the output file

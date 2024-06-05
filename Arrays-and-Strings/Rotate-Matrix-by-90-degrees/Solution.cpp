@@ -8,7 +8,7 @@ using namespace std;
 Name        : rotate()
 Description : Rotates the matrix clockwise or anti-clockwise by 90 degrees
 Arguments   : A 2D vector denoting the matrix and an integer dir denoting the direction of rotation
-Return      : None
+Return      : A 2D vector denoting the rotated matrix
 */
 vector<vector<int>> rotate(vector<vector<int>> matrix, int dir) {
 
@@ -33,7 +33,7 @@ vector<vector<int>> rotate(vector<vector<int>> matrix, int dir) {
             if(i != j)
                 swap(matrix[i][j], matrix[j][i]);
 
-    // Return
+    // Return the rotated matrix
     return matrix;
 }
 
@@ -53,7 +53,7 @@ int main() {
         exit(0);
     }
 
-    // Declare the required variables, read the matrix and direction
+    // Declare the required variables, read the input
     int m, n, dir;
     input >> m >> n;
     vector<vector<int>> matrix(m, vector<int> (n, 0));

@@ -5,8 +5,8 @@ using namespace std;
 
 /*
 Name        : merge()
-Description : Counts the number of inversions in an array using Merge Sort recursively
-Arguments   : The array to be sorted and the size of the array, in that order
+Description : Merges two sorted halves of the array and counts the number of inversions
+Arguments   : The array to be sorted, a buffer array and the boundaries of the subarrays to be merged, in that order
 Return      : The number of inversions computed in merging the sorted subarrays
 */
 int merge(int arr[], int temp[], int low, int mid, int high) {
@@ -41,8 +41,8 @@ int merge(int arr[], int temp[], int low, int mid, int high) {
 /*
 Name        : mergeSort()
 Description : Counts the number of inversions in an array using Merge Sort recursively
-Arguments   : The array to be sorted, an extra buffer array and the boundaries of the array, in that order
-Return      : The number of inversions in the total array passed
+Arguments   : The array to be sorted, a buffer array and the boundaries of the array, in that order
+Return      : The number of inversions in the array
 */
 int mergeSort(int arr[], int temp[], int low, int high) {
     
@@ -99,7 +99,7 @@ int main() {
         exit(0);
     }
 
-    // Declare the required variables and read the array
+    // Declare the required variables and read the input
     int n, inversions;
     input >> n;
     int *arr = new int[n];

@@ -47,7 +47,7 @@ array<int, 3> kadane(int arr[], int n) {
             }
     }
 
-    // Return the output in required format
+    // Return the subarray boundaries and the sum
     return {start, end, max};
 }
 
@@ -67,7 +67,7 @@ int main() {
         exit(0);
     }
 
-    // Declare the required variables and read the array
+    // Declare the required variables and read the input
     int n;
     input >> n;
     int *arr = new int[n];
@@ -89,7 +89,7 @@ int main() {
     for(int i = result[0]; i <= result[1]; i++)
         (i == result[0]) ? (output << arr[i]) : (output << ' ' << arr[i]);
     
-    // Free the array, close the output file and return
+    // Delete the array, close the output file and return
     delete[] arr;
     output.close();
     return 0;

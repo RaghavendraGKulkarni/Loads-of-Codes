@@ -5,7 +5,7 @@ using namespace std;
 
 /*
 Name        : nthCatalanNumber()
-Description : Computes the nth Catalan Number using Dynamic Programming
+Description : Computes the nth Catalan Number
 Arguments   : A single non-negative integer denoting n
 Return      : A single non-negative integer denoting the nth Catalan Number
 */
@@ -25,7 +25,7 @@ int nthCatalanNumber(int n) {
             dp[i] += (dp[j] * dp[(i - 1) - j]);
     }
 
-    // Copy the required result and free the array used
+    // Copy the required result and delete the array used
     result = dp[n];
     delete[] dp;
 

@@ -6,9 +6,9 @@ using namespace std;
 
 /*
 Name        : occurrence()
-Description : Computes the subarray that crosses mid index and has the maximum sum
-Arguments   : The array and the indices low, mid and high, in that order
-Return      : An array denoting the left and right boundaries of the subarray and the maximum sum
+Description : Computes the first and last occurence of an element in a sorted array
+Arguments   : The array, the size of the array and the element to find, in that order
+Return      : An array denoting the first and last occurrences of the element in the array
 */
 array<int, 2> occurrence(int arr[], int n, int key) {
     
@@ -45,7 +45,7 @@ array<int, 2> occurrence(int arr[], int n, int key) {
         }
     }
 
-    // Add the left and right sums and return the array
+    // Return the left and right indices of the array
     return {left, right};
 }
 
@@ -65,7 +65,7 @@ int main() {
         exit(0);
     }
 
-    // Declare the required variables and read the array
+    // Declare the required variables and read the input
     int n, key;
     input >> n >> key;
     int *arr = new int[n];
@@ -89,7 +89,7 @@ int main() {
         output << result[0] + 1 << ' ' << result[1] + 1;
     
     // Delete the array, close the output file and return
-    output.close();
     delete[] arr;
+    output.close();
     return 0;
 }

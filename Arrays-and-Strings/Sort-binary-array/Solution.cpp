@@ -49,7 +49,7 @@ int main() {
         exit(0);
     }
 
-    // Declare the required variables and read the array
+    // Declare the required variables and read the input
     int n;
     input >> n;
     int *arr = new int[n];
@@ -70,7 +70,7 @@ int main() {
     for(int i = 0; i < n; i++)
         (i == 0) ? (output << arr[i]) : (output << ' ' << arr[i]);
     
-    // Free the array, close the output file and return
+    // Delete the array, close the output file and return
     delete[] arr;
     output.close();
     return 0;

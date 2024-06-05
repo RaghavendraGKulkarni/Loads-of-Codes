@@ -6,7 +6,7 @@ using namespace std;
 
 /*
 Name        : generate()
-Description : Builds up different combinations and checks for termination condition
+Description : Builds different combinations of parentheses and checks for termination condition
 Arguments   : A vector of strings to store combinations, 
                 a string denoting current combination, 
                 the total number parentheses pairs and,
@@ -48,7 +48,7 @@ vector<string> generateParentheses(int n) {
     // Call the recursive subroutine to generate the combinations
     generate(combinations, "", n, 0, 0);
 
-    // Return the vector
+    // Return the combinations
     return combinations;
 }
 

@@ -114,7 +114,7 @@ int main() {
     ofstream output;
     output.open("Output.txt");
 
-    // Write the edges followed by the tree weight to the output file
+    // Write the output to the output file
     for(int i = 0; i < g.v - 1; i++)
         output << "Edge (" << result[i][0] << ", " << result[i][1] << ") of weight " << result[i][2] << endl; 
     output << mst;

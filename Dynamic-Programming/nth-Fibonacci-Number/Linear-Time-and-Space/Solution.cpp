@@ -5,7 +5,7 @@ using namespace std;
 
 /*
 Name        : nthFibonacciNumber()
-Description : Computes the nth Fibonacci Number using Dynamic Programming
+Description : Computes the nth Fibonacci Number
 Arguments   : A single non-negative integer denoting n
 Return      : A single non-negative integer denoting the nth Fibonacci Number
 */
@@ -22,7 +22,7 @@ int nthFibonacciNumber(int n) {
     for(i = 2; i <= n; i++)
         dp[i] = dp[i - 1] + dp[i - 2];
 
-    // Copy the required result and free the array used
+    // Copy the required result and delete the array used
     result = dp[n];
     delete[] dp;
 

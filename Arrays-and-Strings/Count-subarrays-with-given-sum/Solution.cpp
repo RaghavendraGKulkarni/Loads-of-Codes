@@ -1,15 +1,14 @@
 // Include the required header files
 #include<iostream>
 #include<fstream>
-#include<array>
 #include<unordered_map>
 using namespace std;
 
 /*
-Name        : kadane()
-Description : Computes the maximum sum of a subarray in the array
-Arguments   : An array of integers and a positive integer denoting the size of the array, in that order
-Return      : An array of three integers denoting the left boundary, right boundary and the sum of the subarray
+Name        : countSubarray()
+Description : Computes the number of subarrays with the given sum in the array
+Arguments   : An array of integers and a positive integer denoting the size of the array and the target sum, in that order
+Return      : An integer denoting the count of subarrays of the array that give the sum 
 */
 int countSubarray(int arr[], int n, int k) {
 
@@ -29,7 +28,7 @@ int countSubarray(int arr[], int n, int k) {
         if(leftSum[i] == k)
             count++;
 
-        // If the required prefix sum exists in map
+        // If the remaining prefix sum exists in the map
         if(mp.find(leftSum[i] - k) != mp.end())
             count += mp[leftSum[i] - k];
 
@@ -60,7 +59,7 @@ int main() {
         exit(0);
     }
 
-    // Declare the required variables and read the array
+    // Declare the required variables and read the input
     int n, k;
     input >> n >> k;
     int *arr = new int[n];
@@ -70,7 +69,7 @@ int main() {
     // Close the input file
     input.close();
 
-    // Call the subroutine to compute the longest subarray
+    // Call the subroutine to compute the number of subarrays that give the sum
     int result = countSubarray(arr, n, k);
 
     // Open the output file
@@ -80,7 +79,7 @@ int main() {
     // Write the output to the output file
     output << result;
     
-    // Free the array, close the output file and return
+    // Delete the array, close the output file and return
     delete[] arr;
     output.close();
     return 0;

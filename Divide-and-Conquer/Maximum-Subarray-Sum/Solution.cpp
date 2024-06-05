@@ -1,7 +1,7 @@
 // Include the required header files
 #include<iostream>
 #include<fstream>
-#include<limits.h>
+#include<limits>
 #include<array>
 using namespace std;
 
@@ -42,7 +42,7 @@ array<int, 3> maximumCrossSubarraySum(int arr[], int low, int mid, int high) {
 /*
 Name        : maximumSubarraySum()
 Description : Computes the subarray that is within the given boundary and has the maximum sum
-Arguments   : The array and the indices low and high
+Arguments   : The array and the indices denoting the boundaries
 Return      : An array denoting the left and right boundaries of the subarray and the maximum sum
 */
 array<int, 3> maximumSubarraySum(int arr[], int low, int high) {
@@ -84,7 +84,7 @@ int main() {
         exit(0);
     }
 
-    // Declare the required variables and read the array
+    // Declare the required variables and read the input
     int n;
     input >> n;
     int *arr = new int[n];
@@ -107,7 +107,7 @@ int main() {
         (i == result[0]) ? (output << arr[i]) : (output << ' ' << arr[i]);
     
     // Delete the array, close the output file and return
-    output.close();
     delete[] arr;
+    output.close();
     return 0;
 }

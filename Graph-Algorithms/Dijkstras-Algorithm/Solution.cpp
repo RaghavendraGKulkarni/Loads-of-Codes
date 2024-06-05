@@ -83,7 +83,7 @@ void dijkstra(graph g, int s, path result[]) {
         result[i].path = (dist[i] == INT_MAX) ? "" : trace(pred, i);
     }
 
-    // Free the arrays and return
+    // Delete the arrays and return
     delete[] dist;
     delete[] pred;
     delete[] visited;

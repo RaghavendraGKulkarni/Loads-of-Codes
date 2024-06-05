@@ -43,7 +43,7 @@ int main() {
         exit(0);
     }
 
-    // Declare the required variables and read the array
+    // Declare the required variables and read the input
     int n;
     input >> n;
     int *arr = new int[n];
@@ -60,7 +60,7 @@ int main() {
     ofstream output;
     output.open("Output.txt");
 
-    // Write the sorted array to the output file
+    // Write the output to the output file
     for(int i = 0; i < n; i++)
         (i == 0) ? (output << arr[i]) : (output << ' ' << arr[i]);
     

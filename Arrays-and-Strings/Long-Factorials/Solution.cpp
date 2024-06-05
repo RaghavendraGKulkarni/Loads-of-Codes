@@ -78,7 +78,7 @@ vector<int> multiply(vector<int> factorial, int number) {
 
 /*
 Name        : computeFactorial()
-Description : Computes the factorial of n
+Description : Computes the factorial of a non-negative integer n
 Arguments   : A single non-negative integer denoting n
 Return      : A vector denoting the factorial of n
 */

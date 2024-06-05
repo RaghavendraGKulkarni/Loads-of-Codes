@@ -32,7 +32,7 @@ array<int, 2> longestSubarray(int arr[], int n, int k) {
             end = i;
         }
 
-        // If the required prefix sum exists in map
+        // If the remaining prefix sum exists in the map
         else if(mp.find(leftSum[i] - k) != mp.end() && maxLength < (i - mp[leftSum[i] - k])) {
             maxLength = i - mp[leftSum[i] - k];
             start = mp[leftSum[i] - k] + 1;
@@ -64,7 +64,7 @@ int main() {
         exit(0);
     }
 
-    // Declare the required variables and read the array
+    // Declare the required variables and read the input
     int n, k;
     input >> n >> k;
     int *arr = new int[n];
@@ -74,7 +74,7 @@ int main() {
     // Close the input file
     input.close();
 
-    // Call the subroutine to compute the longest subarray
+    // Call the subroutine to compute the longest subarray with given sum
     array<int, 2> result = longestSubarray(arr, n, k);
 
     // Open the output file
@@ -85,7 +85,7 @@ int main() {
     for(int i = result[0]; i <= result[1]; i++)
         (i == result[0]) ? (output << arr[i - 1]) : (output << ' ' << arr[i - 1]);
     
-    // Free the array, close the output file and return
+    // Delete the array, close the output file and return
     delete[] arr;
     output.close();
     return 0;
