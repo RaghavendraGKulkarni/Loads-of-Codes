@@ -4,15 +4,27 @@
 #include<vector>
 using namespace std;
 
+/*
+Name        : trace()
+Description : Traces back the preceeding array to construct the subsequence
+Arguments   : Two arrays denoting the elements and the preceeding numbers, 
+                an integer denoting the last element index,
+                and a vector to store the subsequence, in that order
+Return      : None
+*/
 void trace(int arr[], int prec[], int last, vector<int> &result) {
     
+    // Insert the element at the beginning of the subsequence
     result.insert(result.begin(), arr[last]);
 
+    // Check if this element has any preceeding element
     if(prec[last] == -1)
         return;
     
+    // If yes, continue constructing the sequence
     trace(arr, prec, prec[last], result);
 
+    // Return
     return;
 
 }
@@ -54,7 +66,9 @@ vector<int> longestIncreasing(int arr[], int n) {
     // Trace back the prec array and construct the subsequence
     trace(arr, pred, last, result);
 
-    // Return the result
+    // Delete the arrays, and return the result
+    delete[] dp;
+    delete[] pred;
     return result;
 }
 
@@ -84,7 +98,7 @@ int main() {
     // Close the input file
     input.close();
 
-    // Call the subroutine to compute the Catalan Number
+    // Call the subroutine to compute the Longest Increasing Subsequence
     vector<int> result = longestIncreasing(arr, n);
 
     // Open the output file
@@ -95,7 +109,8 @@ int main() {
     for(int i = 0; i < result.size(); i++)
         (i == 0) ? (output << result[i]) : (output << ' ' << result[i]);
     
-    // Close the output file and return
+    // Delete the array, close the output file and return
+    delete[] arr;
     output.close();
     return 0;
 }

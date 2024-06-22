@@ -38,7 +38,7 @@ void generate(vector<string>& combinations, string combination, int n, int open,
 Name        : generateParentheses()
 Description : Computes all possible sequences of balanced parentheses
 Arguments   : The positive integer n, denoting the number of pairs of parentheses
-Return      : An array of strings denoting the combinations
+Return      : A vector of strings denoting the combinations
 */
 vector<string> generateParentheses(int n) {
     
