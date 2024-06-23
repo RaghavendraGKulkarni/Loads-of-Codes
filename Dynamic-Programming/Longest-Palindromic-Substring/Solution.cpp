@@ -13,7 +13,7 @@ Return      : A string denoting the longest palindromic substring, if it exists 
 string longestPalindromicSubstring(string s) {
     
     // Declare the required local variables
-    int i, j, k, n = s.size(), maxLength = 0, start;
+    int i, j, k, n = s.size(), maxLength = 1, start = 0;
     string result = "";
     vector<vector<bool>> dp(n, vector<bool> (n, true));
     

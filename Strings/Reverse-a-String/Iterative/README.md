@@ -1,6 +1,6 @@
 # Reverse a String
 ## Description:
-### Given a string of characters, the program reverses the string iteratively
+### Given a string of non-space characters, the program reverses the string iteratively
 ## Input Format:
 * The first and the only line should contain the string to be reversed
 ## Output Format:
