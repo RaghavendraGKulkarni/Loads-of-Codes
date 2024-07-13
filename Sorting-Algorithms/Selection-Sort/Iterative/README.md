@@ -1,6 +1,6 @@
-# Recursive Selection Sort
+# Selection Sort
 ## Description:
-### Given an unsorted array of n elements, the program sorts the array using Selection Sort Algorithm recursively
+### Given an unsorted array of n elements, the program sorts the array using Selection Sort Algorithm iteratively
 ## Input Format:
 * The first line should contain a positive integer n denoting the size of the array to be sorted
 * The second line should contain n space separated integers denoting the array to be sorted

@@ -1,4 +1,4 @@
-# Iterative Bubble Sort
+# Bubble Sort
 ## Description:
 ### Given an unsorted array of n elements, the program sorts the array using Bubble Sort iteratively
 ## Input Format:

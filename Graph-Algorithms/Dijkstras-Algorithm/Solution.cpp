@@ -24,7 +24,7 @@ typedef struct path {
 /*
 Name        : trace()
 Description : Traces the path from the source to any destination vertex, recursively backwards
-Arguments   : The predecessor array and the destination vertex
+Arguments   : The predecessor array and the destination vertex, in that order
 Return      : The path in a string
 */
 string trace(int pred[], int k) {
@@ -40,7 +40,7 @@ string trace(int pred[], int k) {
 /*
 Name        : dijkstra()
 Description : Computes the shortest path from the source to every vertex of the graph
-Arguments   : The graph, the source vertex and the array to store the paths
+Arguments   : The graph, the source vertex and the array to store the paths, in that order
 Return      : None
 */
 void dijkstra(graph g, int s, path result[]) {

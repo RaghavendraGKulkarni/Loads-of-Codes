@@ -1,26 +1,30 @@
 // Include the required header files
 #include<iostream>
 #include<fstream>
-#include<array>
 #include<stack>
+#include<vector>
 using namespace std;
 
 /*
 Name        : previousSmallerElement()
 Description : Computes the immediate previous smaller element for every element
-Arguments   : The array, the size of the array and the array to store the previous smaller elements
-Return      : The array storing the previous smaller elements
+Arguments   : The array and the size of the array, in that order
+Return      : A vector storing the previous smaller elements
 */
-int* previousSmallerElement(int arr[], int n, int result[]) {
+vector<int> previousSmallerElement(int arr[], int n) {
     
     // Initialize the required local variables
     stack<int> st;
+    vector<int> result;
 
     // For every element, compute the previous smaller element
     for(int i = 0; i < n; i++) {
         while(!st.empty() && arr[i] <= st.top())
             st.pop();
-        result[i] = (st.empty()) ? -1 : st.top();
+        if(st.empty())
+            result.push_back(-1);
+        else
+            result.push_back(st.top());
         st.push(arr[i]);
     }
     
@@ -45,9 +49,9 @@ int main() {
     }
 
     // Declare the required variables and read the input
-    int n, key;
+    int n;
     input >> n;
-    int *arr = new int[n], *result = new int[n];
+    int *arr = new int[n];
     for(int i = 0; i < n; i++)
         input >> arr[i];
 
@@ -55,7 +59,7 @@ int main() {
     input.close();
 
     // Call the subroutine to calculate the previous smaller element of every element
-    result = previousSmallerElement(arr, n, result);
+    vector<int> result = previousSmallerElement(arr, n);
 
     // Open the output file
     ofstream output;
@@ -67,7 +71,6 @@ int main() {
     
     // Delete the arrays, close the output file and return
     delete[] arr;
-    delete[] result;
     output.close();
     return 0;
 }

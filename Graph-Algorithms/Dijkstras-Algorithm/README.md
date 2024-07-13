@@ -1,6 +1,6 @@
 # Dijkstra's Algorithm
 ## Description:
-### Given a graph of n vertices and e edges, the program finds the shortest path from a source s to every other vertex using the Dijkstra's Algorithm
+### Given a weighted graph of n vertices and e edges, the program finds the shortest path from a source s to every other vertex using the Dijkstra's Algorithm
 ## Input Format:
 * The first line should contain two positive integers n and e denoting the number of vertices and edges in the graph followed a character 'D' or 'U' denoting whether the graph is Directed or Undirected
 * The next e lines each should contain three space separated positive integers denoting the from, to and weight of the edge. The vertices from and to must be in the inclusive range [1, n]

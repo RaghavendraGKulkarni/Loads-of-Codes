@@ -1,4 +1,4 @@
-# Iterative_Insertion_Sort
+# Insertion Sort
 ## Description:
 ### Given an unsorted array of n elements, the program sorts the array using Insertion Sort Algorithm iteratively
 ## Input Format: 

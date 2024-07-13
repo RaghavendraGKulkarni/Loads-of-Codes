@@ -1,6 +1,6 @@
 # Prim's Algorithm
 ## Description:
-### Given a graph of n vertices and e edges, the program finds a minimum spanning tree from a source vertex s to using the Prim's Algorithm
+### Given a weighted graph of n vertices and e edges, the program finds a minimum spanning tree from a source vertex s to using the Prim's Algorithm
 ## Input Format:
 * The first line should contain two positive integers n and e denoting the number of vertices and edges in the graph followed a character 'D' or 'U' denoting whether the graph is Directed or Undirected
 * The next e lines each should contain three space separated positive integers denoting the from, to and weight of the edge. The vertices from and to must be in the range [1, n]

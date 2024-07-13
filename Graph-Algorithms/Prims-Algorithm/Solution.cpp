@@ -20,7 +20,7 @@ typedef struct graph {
 /*
 Name        : prims()
 Description : Computes the minimum spanning tree from the source vertex of the graph
-Arguments   : The graph, the source vertex and the array to store the tree edges
+Arguments   : The graph, the source vertex and the array to store the tree edges, in that order
 Return      : The total weight of the minimum spanning tree
 */
 int prims(graph g, int s, array<int, 3> result[]) {

@@ -87,12 +87,12 @@ ListNode* merge(ListNode *head1, ListNode *head2) {
 }
 
 /*
-Name        : sortList()
-Description : Sorts the linked list
+Name        : mergeSortList()
+Description : Sorts the linked list using Merge Sort
 Arguments   : Pointer to the head of the linked list
 Return      : Pointer to the head of the modified linked list
 */
-ListNode* sortList(ListNode *head) {
+ListNode* mergeSortList(ListNode *head) {
 
     // Handle the base case
     if(!head->next)
@@ -108,8 +108,8 @@ ListNode* sortList(ListNode *head) {
     middle->next = NULL;
 
     // Recursively sort the halves
-    head1 = sortList(head1);
-    head2 = sortList(head2);
+    head1 = mergeSortList(head1);
+    head2 = mergeSortList(head2);
 
     // Merge the sorted halves
     head = merge(head1, head2);
@@ -176,7 +176,7 @@ int main() {
     input.close();
 
     // Call the subroutine to sort the linked list
-    head = sortList(head);
+    head = mergeSortList(head);
 
     // Open the output file
     ofstream output;

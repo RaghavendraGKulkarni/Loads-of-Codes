@@ -5,7 +5,7 @@ using namespace std;
 
 /*
 Name        : iterativeSelectionSort()
-Description : Sorts the array using Selection Sort recursively
+Description : Sorts the array using Selection Sort iteratively
 Arguments   : The array to be sorted and the size of the array, in that order
 Return      : None
 */

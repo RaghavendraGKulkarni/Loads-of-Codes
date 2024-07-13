@@ -58,7 +58,7 @@ int main() {
     input.close();
 
     // Call the subroutine to compute the number of ways
-    int result = (arr, n, k);
+    int result = numWays(arr, n, k);
 
     // Open the output file
     ofstream output;

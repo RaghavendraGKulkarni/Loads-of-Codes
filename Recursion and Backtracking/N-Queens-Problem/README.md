@@ -2,7 +2,7 @@
 ## Description:
 ### Given a positive integer n, the programs lists all possible arrangements of n Queens on a nxn chess board that no two queens can attack each other, using Backtracking paradigm
 ## Input Format:
-* The first and the only line should contain a positive integers n (not greater than 10) denoting the value of n
+* The first and the only line should contain a positive integer n (not greater than 10) denoting the value of n
 ## Output Format:
 * The first line contains a descriptive statement about the number of valid configurations followed by an empty line
 * Each configuration is a nxn grid with empty cells represented as '*' and Queen occupied cells represented as 'Q'

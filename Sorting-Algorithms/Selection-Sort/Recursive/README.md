@@ -1,4 +1,4 @@
-# Recursive Selection Sort
+# Selection Sort
 ## Description:
 ### Given an unsorted array of n elements, the program sorts the array using Selection Sort Algorithm recursively
 ## Input Format:
