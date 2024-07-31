@@ -11,7 +11,7 @@ Description : Computes the immediate next greater element for every element
 Arguments   : The array and the size of the array, in that order
 Return      : A vector storing the next greater elements
 */
-vector<int> previousSmallerElement(int arr[], int n) {
+vector<int> nextGreaterElement(int arr[], int n) {
     
     // Initialize the required local variables
     stack<int> st;
@@ -59,7 +59,7 @@ int main() {
     input.close();
 
     // Call the subroutine to calculate the next greater element of every element
-    vector<int> result = previousSmallerElement(arr, n);
+    vector<int> result = nextGreaterElement(arr, n);
 
     // Open the output file
     ofstream output;

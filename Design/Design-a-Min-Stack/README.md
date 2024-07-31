@@ -1,10 +1,11 @@
 # Design a Min Stack
 ## Description:
 ### Design a stack data structure that supports the following operations in constant average time complexity
-1) push(x): Pushes an element x into the stack  
-2) pop(): Popes an element from the top of the stack    
-3) top(): Returns the top element of the stack  
-4) getMin(): Returns the minimum element from the stack
+1) minStack(): Initiates a minStack object
+2) push(x): Pushes an element x into the stack  
+3) pop(): Popes an element from the top of the stack    
+4) top(): Returns the top element of the stack  
+5) getMin(): Returns the minimum element from the stack
 ## Input Format:
 * The first line should contain a positive integer n denoting the number of operations to be performed
 * The next n lines should contain one of the following operation inputs:    
