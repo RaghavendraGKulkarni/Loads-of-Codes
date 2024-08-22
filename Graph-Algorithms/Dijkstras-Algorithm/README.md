@@ -7,7 +7,7 @@
 * The last line should contain a single integer in the inclusive range [1, n] denoting the source vertex
 ## Output Format:
 * The n - 1 output lines each, will contain the shortest distance to every other vertex followed by the path
-* The hops in the path are separated by '->'
+* The hops in the path are separated by " -> "
 ## Time Complexity: 
 * O(n log n)
 ## Space Complexity: 

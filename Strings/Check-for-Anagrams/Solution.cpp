@@ -52,7 +52,7 @@ int main() {
     // Close the input file
     input.close();
 
-    // Call the subroutine to check if the string is a Pangram
+    // Call the subroutine to check if the strings are a Anagrams
     string result = checkAnagram(a, b);
 
     // Open the output file

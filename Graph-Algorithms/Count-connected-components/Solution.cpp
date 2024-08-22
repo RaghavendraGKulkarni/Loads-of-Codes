@@ -11,41 +11,49 @@ typedef struct graph {
     int v;
     vector<array<int, 2>> edges;
 } graph;
+class unionFind {
 
-/*
-Name        : find()
-Description : Computes the root of the component to which the given node belongs
-Arguments   : The array of the root nodes and the vertex whose root is to be found, in that order
-Return      : The root of the component to which the node belongs to
-*/
-int find(int root[], int u) {
-    if(root[u] != u)
-        root[u] = find(root, root[u]);
-    return root[u];
-}
-
-/*
-Name        : merge()
-Description : Merges the components of two given nodes
-Arguments   : The array of the root nodes, the array of size nodes and the vertices to be merged, in that order
-Return      : True if they are successfully merged and False if they were already merged
-*/
-bool merge(int root[], int size[], int u, int v) {
+    // Declare the private variables
+    private:
+        vector<int> parent;
+        vector<int> size;
     
-    // Find the root nodes of the given nodes
-    int u1 = find(root, u), v1 = find(root, v);
+    // Define the public methods
+    public:
 
-    // Check if they belong to the same component
-    if(u1 == v1)
-        return false;
-    
-    // Combine the smaller component into the larger component
-    if(size[u1] < size[v1])
-        swap(u1, v1);
-    root[v1] = u1;
-    size[u1] += size[v1];
-    return true;
-}
+        // Define the class constructor
+        unionFind(int n) {
+            parent.resize(n);
+            size.resize(n);
+            for(int i = 0; i < n; i++) {
+                parent[i] = i;
+                size[i] = 1;
+            }
+        }
+
+        // Define the find method
+        int find(int u) {
+            if(parent[u] != u)
+                parent[u] = find(parent[u]);
+            return parent[u];
+        }
+
+        // Define the merge method
+        bool merge(int u, int v) {
+            int u1 = find(u), v1 = find(v);
+            if(u1 == v1)
+                return false;
+            if(size[u1] > size[v1]) {
+                parent[v1] = u1;
+                size[u1] += size[v1];
+            }
+            else {
+                parent[u1] = v1;
+                size[v1] += size[u1];
+            }
+            return true;
+        }
+};
 
 /*
 Name        : countComponents()
@@ -56,26 +64,18 @@ Return      : The total weight of the minimum spanning tree
 int countComponents(graph g) {
     
     // Declare and initialize the required local variables
+    unionFind uf(g.v + 1);
     int components = g.v;
-    int *root = new int[g.v + 1], *size = new int[g.v + 1];
-
-    // Initialize the Union Find
-    for(int i = 1; i <= g.v; i++) {
-        root[i] = i;
-        size[i] = 1;
-    }
 
     // For each edge in the graph
     for(auto &edge : g.edges) {
 
         // Check if the edge points belong to the same component
-        if(merge(root, size, edge[0], edge[1]))
+        if(uf.merge(edge[0], edge[1]))
             components--;
     }
 
-    // Free the arrays and return the total weight
-    delete[] root;
-    delete[] size;
+    // Return the number of connected components
     return components;
 }
 

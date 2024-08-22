@@ -1,4 +1,4 @@
-# Check for Pangra,
+# Check for Anagrams
 ## Description:
 ### Given two strings of lower case English letters, the program checks whether the two strings are anagrams of each other or not
 ## Input Format:

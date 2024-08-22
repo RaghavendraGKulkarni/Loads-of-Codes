@@ -10,11 +10,11 @@ using namespace std;
 // Declare the required data types
 typedef struct vertex {
     int degree;
-    array<int, 2> *neighbors;
+    vector<array<int, 2>> neighbors;
 } vertex;
 typedef struct graph {
     int v;
-    vertex *vertices;
+    vector<vertex> vertices;
 } graph;
 typedef struct path {
     int distance;
@@ -113,19 +113,15 @@ int main() {
     
     // Read the graph vertices, edges and the source vertex
     input >> g.v >> e >> type;
-    g.vertices = new vertex[g.v + 1];
-    for(int i = 1; i <= g.v; i++) {
+    g.vertices.resize(g.v + 1);
+    for(int i = 1; i <= g.v; i++)
         g.vertices[i].degree = 0;
-        g.vertices[i].neighbors = (array<int, 2>*)calloc(1, sizeof(array<int, 2>));
-    }
     for(int i = 0; i < e; i++) {
         input >> u >> v >> w;
-        g.vertices[u].neighbors = (array<int, 2>*)realloc(g.vertices[u].neighbors, (g.vertices[u].degree + 1)*sizeof(array<int, 2>));
-        g.vertices[u].neighbors[g.vertices[u].degree] = {v, w};
+        g.vertices[u].neighbors.push_back({v, w});
         g.vertices[u].degree++;
         if(type == 'U') {
-            g.vertices[v].neighbors = (array<int, 2>*)realloc(g.vertices[v].neighbors, (g.vertices[v].degree + 1)*sizeof(array<int, 2>));
-            g.vertices[v].neighbors[g.vertices[v].degree] = {u, w};
+            g.vertices[v].neighbors.push_back({u, w});
             g.vertices[v].degree++;
         }
     }
@@ -155,10 +151,7 @@ int main() {
             output << "Shortest distance to " << i << " is " << result[i].distance << " via " << result[i].path;
     }
 
-    // Delete the arrays, close the output file and return
-    for(int i = 1; i <= g.v; i++)
-        free(g.vertices[i].neighbors);
-    delete[] g.vertices;
+    // Delete the array, close the output file and return
     delete[] result;
     output.close();
     return 0;

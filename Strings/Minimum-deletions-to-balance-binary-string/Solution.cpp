@@ -63,7 +63,7 @@ int main() {
     // Close the input file
     input.close();
 
-    // Call the subroutine to check if the string is a Pangram
+    // Call the subroutine to balance the binary string
     int result = balanceBinaryString(str);
 
     // Open the output file
