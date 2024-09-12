@@ -75,8 +75,8 @@ class sql {
 
 /*
 Name        : process()
-Description : Processes each query on the Twitter system
-Arguments   : A 2D vector denoting the queries
+Description : Processes each query on the SQL system
+Arguments   : A vector denoting the queries
 Return      : A vector of the outputs
 */
 vector<string> process(vector<string> queries) {
