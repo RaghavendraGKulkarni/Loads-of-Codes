@@ -11,7 +11,7 @@
                                         n   6   9   n           4   n
 8 5 2 1 7 null 3 null 6 9 null 4 null
 * Note that the children of null nodes need not be specified as anything
-* For a null tree with 0 nodes, the second should only contain 'null'
+* For a null tree with 0 nodes, the first line should only contain 'null'
 ## Output Format:
 * The first line will contain space separated integers denoting the preorder order traversal
 * The second line will contain space separated integers denoting the inorder order traversal

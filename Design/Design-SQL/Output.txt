@@ -1,0 +1,9 @@
+Table successfully created
+Table successfully created
+Row successfully inserted
+Row successfully inserted
+Row successfully inserted
+seven, eight, nine, ten
+Row successfully deleted
+four, five, six
+ten

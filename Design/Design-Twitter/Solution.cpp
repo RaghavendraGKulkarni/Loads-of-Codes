@@ -9,7 +9,7 @@
 #include<algorithm>
 using namespace std;
 
-// Define the twitter LRUCache
+// Define the class twitter
 class twitter {
 
     // Define the required private variables
@@ -49,6 +49,7 @@ class twitter {
         // Define the postTweet method
         void postTweet(int userId, int tweetId) {
             tweets.push(new tweet(userId, tweetId, globalTime++));
+            return;
         }
         
         // Define the getFeed method

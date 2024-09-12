@@ -1,9 +1,7 @@
 // Include the required header files
 #include<iostream>
 #include<fstream>
-#include<stdbool.h>
 #include<vector>
-#include<stack>
 using namespace std;
 
 // Declare the required union find data structure

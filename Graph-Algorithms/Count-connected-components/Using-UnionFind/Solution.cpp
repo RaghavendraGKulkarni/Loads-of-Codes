@@ -3,7 +3,6 @@
 #include<fstream>
 #include<array>
 #include<vector>
-#include<algorithm>
 using namespace std;
 
 // Declare the required data types
@@ -56,12 +55,12 @@ class unionFind {
 };
 
 /*
-Name        : countComponents()
-Description : Computes the number of components in the graph
-Arguments   : The graph and the array to store the tree edges, in that order
-Return      : The total weight of the minimum spanning tree
+Name        : countComponentsUsingUnionFind()
+Description : Computes the number of components in the graph using union find
+Arguments   : The graph
+Return      : The total number of connected components
 */
-int countComponents(graph g) {
+int countComponentsUsingUnionFind(graph g) {
     
     // Declare and initialize the required local variables
     unionFind uf(g.v + 1);
@@ -113,7 +112,7 @@ int main() {
     input.close();
 
     // Call the subroutine to compute the number of components
-    int components = countComponents(g);
+    int components = countComponentsUsingUnionFind(g);
 
     // Open the output file
     ofstream output;
