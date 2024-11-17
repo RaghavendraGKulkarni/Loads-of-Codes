@@ -104,8 +104,12 @@ int main() {
     output.open("Output.txt");
 
     // Write the output to the output file
-    for(int i = 0; i < result.size(); i++)
-        (i == 0) ? (output << result[i]) : (output << ' ' << result[i]);
+    if(result.size() < g.v)
+        output << "None";
+    else {
+        for(int i = 0; i < result.size(); i++)
+            (i == 0) ? (output << result[i]) : (output << ' ' << result[i]);
+    }
 
     // Close the output file and return
     output.close();

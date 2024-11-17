@@ -7,12 +7,12 @@ using namespace std;
 /*
 Name        : trace()
 Description : Traces back the preceeding array to construct the subsequence
-Arguments   : Two arrays denoting the elements and the preceeding numbers, 
+Arguments   : Two vectors denoting the elements and the preceeding numbers, 
                 an integer denoting the last element index,
                 and a vector to store the subsequence, in that order
 Return      : None
 */
-void trace(int arr[], int prec[], int last, vector<int> &result) {
+void trace(vector<int> arr, vector<int> prec, int last, vector<int> &result) {
     
     // Insert the element at the beginning of the subsequence
     result.insert(result.begin(), arr[last]);
@@ -35,11 +35,11 @@ Description : Computes the longest increasing subsequence of the array
 Arguments   : The array and a positive integer denoting the size of the array, in that order
 Return      : A vector denoting the longest increasing subsequence
 */
-vector<int> longestIncreasing(int arr[], int n) {
+vector<int> longestIncreasing(vector<int> arr) {
     
     // Declare the required local variables
-    int i, j, *dp = new int[n], *pred = new int[n], maxLength, last;
-    vector<int> result;
+    int n = arr.size(), i, j, maxLength, last;
+    vector<int> result, dp(n), pred(n);
 
     // Initialize the base case
     dp[0] = 1;
@@ -66,9 +66,7 @@ vector<int> longestIncreasing(int arr[], int n) {
     // Trace back the prec array and construct the subsequence
     trace(arr, pred, last, result);
 
-    // Delete the arrays, and return the result
-    delete[] dp;
-    delete[] pred;
+    // Return the result
     return result;
 }
 
@@ -91,7 +89,7 @@ int main() {
     // Declare the required variables and read the input
     int n;
     input >> n;
-    int *arr = new int[n];
+    vector<int> arr(n);
     for(int i = 0; i < n; i++)
         input >> arr[i];
 
@@ -99,7 +97,7 @@ int main() {
     input.close();
 
     // Call the subroutine to compute the Longest Increasing Subsequence
-    vector<int> result = longestIncreasing(arr, n);
+    vector<int> result = longestIncreasing(arr);
 
     // Open the output file
     ofstream output;
@@ -109,8 +107,7 @@ int main() {
     for(int i = 0; i < result.size(); i++)
         (i == 0) ? (output << result[i]) : (output << ' ' << result[i]);
     
-    // Delete the array, close the output file and return
-    delete[] arr;
+    // Close the output file and return
     output.close();
     return 0;
 }
