@@ -7,13 +7,13 @@ using namespace std;
 /*
 Name        : iterativeHornersRule()
 Description : Evaluates a polynomial on a given value using Horner's Rule iteratively
-Arguments   : The vector of polynomial coefficients and the value of x, in that order
+Arguments   : An integer denoting the degree of the polynomial, an array of polynomial coefficients and the value of x, in that order
 Return      : An integer denoting the value of the polynomial
 */
-int iterativeHornersRule(vector<int> coefficients, int x) {
+int iterativeHornersRule(int n, int coefficients[], int x) {
 
     // Declare the required local variables
-    int y = 0, n = coefficients.size();
+    int y = 0;
 
     // Compute the polynomial value
     for(int i = n-1; i >= 0; i--)
@@ -42,7 +42,7 @@ int main() {
     // Declare the required variables and read the input
     int n, x;
     input >> n >> x;
-    vector<int> coefficients(n + 1);
+    int *coefficients = new int[n + 1];
     for(int i = 0; i <= n; i++)
         input >> coefficients[i];
 
@@ -50,7 +50,7 @@ int main() {
     input.close();
 
     // Call the subroutine to evaluate the polynomial
-    int result = iterativeHornersRule(coefficients, x);
+    int result = iterativeHornersRule(n, coefficients, x);
 
     // Open the output file
     ofstream output;
@@ -59,7 +59,8 @@ int main() {
     // Write the output to the output file
     output << result;
     
-    // Close the output file and return
+    // Delete the array, close the output file and return
+    delete[] coefficients;
     output.close();
     return 0;
 }

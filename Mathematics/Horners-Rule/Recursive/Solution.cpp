@@ -7,17 +7,18 @@ using namespace std;
 /*
 Name        : recursiveHornersRule()
 Description : Evaluates a polynomial on a given value using Horner's Rule recursively
-Arguments   : The vector of polynomial coefficients and the value of x, in that order
+Arguments   : An integer denoting the degree of the polynomial, an array of polynomial coefficients, the value of x and
+            , the current index of evalauation, in that order
 Return      : An integer denoting the value of the polynomial
 */
-int recursiveHornersRule(vector<int> coefficients, int x, int index = 0) {
+int recursiveHornersRule(int n, int coefficients[], int x, int index = 0) {
     
     // Handle the base case
-    if(index == coefficients.size())
+    if(index == n + 1)
         return 0;
     
     // Recursive rule for the Horner's Rule
-    int result = coefficients[index] + ( x * recursiveHornersRule(coefficients, x, index + 1));
+    int result = coefficients[index] + ( x * recursiveHornersRule(n, coefficients, x, index + 1));
 
     // Return the result
     return result;
@@ -42,7 +43,7 @@ int main() {
     // Declare the required variables and read the input
     int n, x;
     input >> n >> x;
-    vector<int> coefficients(n + 1);
+    int *coefficients = new int[n + 1];
     for(int i = 0; i <= n; i++)
         input >> coefficients[i];
 
@@ -50,7 +51,7 @@ int main() {
     input.close();
 
     // Call the subroutine to evaluate the polynomial
-    int result = recursiveHornersRule(coefficients, x);
+    int result = recursiveHornersRule(n, coefficients, x);
 
     // Open the output file
     ofstream output;
@@ -59,7 +60,8 @@ int main() {
     // Write the output to the output file
     output << result;
     
-    // Close the output file and return
+    // Delete the array, close the output file and return
+    delete[] coefficients;
     output.close();
     return 0;
 }
